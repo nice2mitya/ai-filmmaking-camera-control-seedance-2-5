@@ -1,4 +1,4 @@
-# AGENTS.md: Seedance 2.5 camera control with three.js
+# AGENTS.md: AI filmmaking camera control with Seedance 2.5 and three.js
 
 For AI agents (Claude, Codex, Cursor, others). Read this first.
 

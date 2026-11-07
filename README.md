@@ -1,6 +1,6 @@
-# Seedance 2.5 camera control with three.js: the pill pipeline
+# AI filmmaking camera control with Seedance 2.5 and three.js: the pill pipeline
 
-**Control a Seedance 2.5 film with a 3D camera you wrote in code.** The move, speed, framing and cuts come from your code, not from the model's guess. The model still makes the people and the place.
+**Direct the camera of an AI film made with Seedance 2.5, with a 3D camera you wrote in code.** 137 filmmaking camera moves: dolly, crane, orbit, whip pan, FPV, one-takes, action and famous shots. The move, speed, framing and cuts come from your code, not from the model's guess. The model still makes the people and the place.
 
 <p align="center"><img src="docs/assets/hero-three-stages.gif" alt="A grey 3D scene, the same scene with people as striped pills, and what the video model made from it" width="100%"></p>
 

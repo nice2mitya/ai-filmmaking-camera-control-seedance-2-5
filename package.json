@@ -1,8 +1,8 @@
 {
-  "name": "seedance-2-5-camera-control",
+  "name": "ai-filmmaking-camera-control-seedance-2-5",
   "version": "0.1.0",
   "private": true,
-  "description": "Seedance 2.5 camera control with three.js: the pill pipeline, 137 templates and the Tein setup.",
+  "description": "AI filmmaking camera control with Seedance 2.5 and three.js: 137 camera templates, prompts and the Tein setup.",
   "license": "MIT",
   "scripts": {
     "check": "python3 tools/check_repo.py .",
