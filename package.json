@@ -1,0 +1,14 @@
+{
+  "name": "seedance-2-5-camera-control",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Seedance 2.5 camera control with three.js: the pill pipeline, 137 templates and the Tein setup.",
+  "license": "MIT",
+  "scripts": {
+    "check": "python3 tools/check_repo.py .",
+    "pill": "cd engine/cinematic && tools/render-pill.sh"
+  },
+  "engines": {
+    "node": ">=22.12"
+  }
+}

@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pill Gallery</title>
+<meta name="description" content="Camera moves as grey 3D clips with striped pills for people, next to what an AI video model made from each one.">
+<style>
+:root{--bg:#f6f5f2;--card:#fff;--fg:#17171a;--mut:#66666c;--line:#e2e0da;--acc:#d6246e;--chip:#ecebe6;--code:#f1f0ec}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#101012;--card:#18181b;--fg:#ececea;--mut:#9a9aa0;--line:#2a2a2f;--acc:#ff4f95;--chip:#222227;--code:#1d1d21}}
+:root[data-theme=dark]{--bg:#101012;--card:#18181b;--fg:#ececea;--mut:#9a9aa0;--line:#2a2a2f;--acc:#ff4f95;--chip:#222227;--code:#1d1d21}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif}
+a{color:var(--acc)}
+.wrap{max-width:1280px;margin:0 auto;padding:0 16px}
+header.top{padding:40px 0 18px}
+h1{font-size:clamp(28px,5vw,44px);line-height:1.1;margin:0 0 10px;letter-spacing:-.02em}
+.lede{max-width:760px;color:var(--mut);font-size:17px;margin:0}
+.pillmark{display:inline-block;width:.5em;height:.9em;border-radius:.3em;vertical-align:-.08em;margin-right:.18em;background:repeating-linear-gradient(135deg,var(--acc) 0 .16em,#111 .16em .32em)}
+.bar{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);padding:10px 0}
+.bar .wrap{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.chip{border:1px solid var(--line);background:var(--chip);color:var(--fg);border-radius:999px;padding:5px 12px;font:inherit;font-size:13px;cursor:pointer}
+.chip[aria-pressed=true]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+input[type=search]{flex:1;min-width:160px;max-width:280px;margin-left:auto;border:1px solid var(--line);background:var(--card);color:var(--fg);border-radius:8px;padding:6px 10px;font:inherit;font-size:14px}
+.count{color:var(--mut);font-size:13px}
+section.fam{padding:34px 0 6px}
+section.fam>h2{font-size:24px;margin:0 0 4px;letter-spacing:-.01em}
+section.fam>p{margin:0 0 16px;color:var(--mut)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,560px),1fr));gap:18px}
+article.card{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.media{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line)}
+.media.one{grid-template-columns:1fr}
+.media figure{margin:0;position:relative;background:#000;aspect-ratio:2.39/1}
+.media video{width:100%;height:100%;object-fit:cover;display:block}
+.media figcaption{position:absolute;left:6px;top:6px;background:#000a;color:#fff;font-size:11px;padding:2px 7px;border-radius:999px;pointer-events:none}
+.media .none{display:grid;place-items:center;height:100%;color:#888;font-size:12px;text-align:center;padding:10px}
+.body{padding:12px 14px 14px}
+.body h3{margin:0;font-size:17px}
+.body h3 small{color:var(--mut);font-weight:400;font-size:12px;margin-left:6px}
+.says{margin:6px 0 0}
+.tag{display:inline-block;font-size:11px;border-radius:999px;padding:1px 8px;margin-left:6px;background:var(--chip);color:var(--mut)}
+.tag.good{background:#1f7a3f22;color:#2a9d57}
+details{margin-top:8px;border-top:1px solid var(--line);padding-top:6px}
+summary{cursor:pointer;color:var(--mut);font-size:13px}
+details p{margin:6px 0}
+details b{color:var(--fg)}
+pre{white-space:pre-wrap;word-break:break-word;background:var(--code);border-radius:8px;padding:10px;font:12px/1.5 ui-monospace,Menlo,Consolas,monospace;max-height:340px;overflow:auto;margin:6px 0}
+button.copy{border:1px solid var(--line);background:var(--chip);color:var(--fg);border-radius:6px;padding:3px 9px;font:inherit;font-size:12px;cursor:pointer}
+.extras{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:8px;margin-top:8px}
+.extras figure{margin:0;background:#000;border-radius:6px;overflow:hidden}.extras video{width:100%;display:block;aspect-ratio:2.2/1;object-fit:cover}.extras figcaption{color:#ddd;font-size:11px;padding:3px 7px;background:#111}
+.looks .row{margin:0 0 22px}.looks h3{margin:0 0 6px;font-size:16px}
+.how{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin:22px 0}
+.how ol{margin:8px 0 0 18px;padding:0}.how li{margin:4px 0}
+footer{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 50px;color:var(--mut);font-size:13px}
+.hidden{display:none!important}
+.fnote{max-width:820px;color:var(--mut);margin:0 0 6px}
+.gloss{margin:6px 0 0;color:var(--mut);font-size:13px}
+.hero{max-width:1280px;margin:8px auto 22px;padding:0 16px}
+.hero3wrap{max-width:1180px;margin:0 auto}
+.hero3{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:10px;align-items:start}
+.h3col{min-width:0}
+.h3step{font-size:12px;font-weight:700;color:var(--acc);text-transform:uppercase;letter-spacing:.06em;margin:0 0 4px}
+.h3col figure{margin:0;background:#000;border-radius:12px;overflow:hidden;border:1px solid var(--line);aspect-ratio:3/2}
+.h3col video{width:100%;height:100%;object-fit:cover;object-position:50% 50%;display:block}
+.h3label{font-weight:700;font-size:16px;margin:8px 0 2px}
+.h3text{margin:0;color:var(--mut);font-size:13px;line-height:1.45}
+.h3arrow{align-self:center;font-size:30px;color:var(--acc);margin-top:30px;line-height:1}
+.hint{color:var(--mut);font-size:12px;margin:10px 2px 0;text-align:center}
+@media(max-width:800px){.hero3{grid-template-columns:1fr}.h3arrow{transform:rotate(90deg);margin:0;text-align:center}}
+.steps3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:6px 0 14px}
+.steps3 div{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:flex;gap:10px;align-items:flex-start;font-size:14px}
+.steps3 b{flex:none;width:24px;height:24px;border-radius:50%;background:var(--acc);color:#fff;display:grid;place-items:center;font-size:13px}
+@media(max-width:800px){.steps3{grid-template-columns:1fr}}
+details.how summary{cursor:pointer;font-weight:700;font-size:16px;color:var(--fg)}
+.how h2,.how>b{font-size:20px}.how p{margin:8px 0;max-width:860px}.how .mut{color:var(--mut);font-size:13px}
+.steps{margin:8px 0 0 18px;padding:0;max-width:860px}.steps li{margin:6px 0}
+.sk h2{font-size:24px;margin:0 0 4px}.sk h3{margin:26px 0 6px;font-size:18px}.sk .lede2{color:var(--mut);max-width:820px;margin:0 0 14px}
+.four{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:0 0 20px}
+.four figure{margin:0;background:#000;border-radius:8px;overflow:hidden}
+.four video,.four img{width:100%;display:block;aspect-ratio:2.2/1;object-fit:cover;background:#000}
+.four img.sheet{object-fit:contain;background:#fff}
+.four figcaption{color:#ddd;font-size:11px;padding:4px 8px;background:#111;min-height:30px}
+.four .none{display:grid;place-items:center;aspect-ratio:2.2/1;color:#888;font-size:12px;padding:8px;text-align:center;background:#0a0a0a}
+.pair-title{margin:0 0 6px;font-size:15px}.pair-title small{color:var(--mut);font-weight:400;margin-left:6px}
+.exrow-unused{display:grid;grid-template-columns:150px 1fr 1fr;gap:8px;align-items:center;margin:0 0 8px}
+.exrow .lab{font-size:12px;color:var(--mut)}
+.exrow figure{margin:0;background:#000;border-radius:6px;overflow:hidden}.exrow video,.exrow img{width:100%;display:block;aspect-ratio:2.2/1;object-fit:cover}.exrow img{object-fit:contain;background:#fff}
+h4.pair-title{margin:22px 0 6px}
+.rowlabel{font-size:13px;color:var(--mut);margin:10px 0 4px;font-weight:600}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 12px}
+.colhead{display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:12px;font-weight:700;color:var(--fg);margin:6px 0 4px;text-transform:uppercase;letter-spacing:.04em}
+.colhead.three{grid-template-columns:repeat(3,1fr)}
+.three{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;align-items:start;margin:0 0 10px}
+.three figure{margin:0;background:#000;border-radius:8px;overflow:hidden}.three figure.sheet{background:#fff}
+.three video{width:100%;display:block;aspect-ratio:2.2/1;object-fit:cover}.three img{width:100%;display:block;height:auto}
+.three figcaption{color:#ddd;font-size:11px;padding:4px 8px;background:#111}.three .none{display:grid;place-items:center;aspect-ratio:2.2/1;color:#888;font-size:12px;background:#0a0a0a}
+@media(max-width:700px){.three{grid-template-columns:1fr}.colhead.three{display:none}}
+.moredet{margin:12px 0}.moredet summary{font-size:14px}
+.cmp{margin:0 0 14px}.cmplab{font-size:12px;color:var(--mut);margin:0 0 4px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:8px;align-items:start}
+.two figure{margin:0;background:#000;border-radius:8px;overflow:hidden}.two figure.sheet{background:#fff}
+.two video{width:100%;display:block;aspect-ratio:2.2/1;object-fit:cover}.two img{width:100%;display:block;height:auto}
+.two figcaption{color:#ddd;font-size:11px;padding:4px 8px;background:#111}
+@media(max-width:700px){.two{grid-template-columns:1fr}}
+.lrow{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 14px}
+.lrow figure{margin:0;background:#000;border-radius:8px;overflow:hidden;flex:1 1 200px;min-width:0}
+.lrow figure.sheet{flex:2 1 380px;background:#fff}
+.lrow video,.lrow img{width:100%;display:block}.lrow video{aspect-ratio:2.2/1;object-fit:cover}.lrow img{height:auto}
+.lrow figcaption,.pairwrap figcaption{color:#ddd;font-size:11px;padding:4px 8px;background:#111}
+.pairwrap{margin:0 0 20px}.pairwrap>figure,.pairwrap>.sync>figure{margin:0 0 8px;border-radius:8px;overflow:hidden;background:#fff}
+.pairwrap img{width:100%;display:block;height:auto}.pairwrap video{width:100%;display:block;aspect-ratio:2.2/1;object-fit:cover;background:#000}
+.lrow .none{display:grid;place-items:center;aspect-ratio:2.2/1;color:#888;font-size:12px;padding:8px;text-align:center;background:#0a0a0a}
+@media(max-width:800px){.four{grid-template-columns:1fr 1fr}.exrow{grid-template-columns:1fr 1fr}.exrow .lab{grid-column:1/-1}}
+@media(max-width:700px){.bar .wrap{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}.bar .wrap::-webkit-scrollbar{display:none}.chip{white-space:nowrap;flex:none}input[type=search]{flex:none;width:150px;margin-left:0}.count{display:none}.media{grid-template-columns:1fr}.media.one{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <h1><span class="pillmark"></span>Pill Gallery</h1>
+  <p class="lede">Plan a camera move in simple 3D, then let an AI video model turn it into a real shot. Every person is a striped pill, so the model gets where everyone stands and how the camera moves, with no body to copy.</p>
+  <p class="gloss">Previs = a rough 3D plan of a shot, made before the real thing.</p>
+</div></header>
+<section class="hero" id="hero" aria-label="How a move becomes a shot"></section>
+
+<div class="bar"><div class="wrap" id="bar"></div></div>
+
+<main class="wrap">
+  <section class="steps3" aria-label="How to use a move">
+    <div><b>1</b><span>Pick a move below and download its pill clip, the video on the left.</span></div>
+    <div><b>2</b><span>Send it to a video model with a photo of your own person or product, and the prompt on the card.</span></div>
+    <div><b>3</b><span>Change the words in the prompt. Keep the sentences that say what the pills are.</span></div>
+  </section>
+  <details class="how" id="made">
+    <summary>How it is made, for the curious</summary>
+    <p>Everything on the left of a card is rendered, not filmed. Each move is a small file that describes a set, some people and a camera, and a renderer plays it back frame by frame.</p>
+    <ol class="steps">
+      <li><b>A 3D scene.</b> The file builds a grey set, places the people and products, and sets the camera: lens, focus and the move. A frame is a pure function of time, so it always comes out the same.</li>
+      <li><b>Rendered in a browser.</b> The scene is drawn with three.js inside Remotion, frame by frame in headless Chrome, at 24 frames a second with a film-style shutter, in a wide 2.39:1 frame.</li>
+      <li><b>A lens, not a game look.</b> Every frame passes through one chain: soft shadows for the clay look, depth of field worked out from the lens and focus distance, bloom, motion blur, a film tone curve and grain.</li>
+      <li><b>People become pills.</b> The animated mannequin (a free CC0 rig with about 80 captured moves, sampled so feet never slide) is swapped for a striped capsule fitted to the body. Products get the same pill. Crates, debris and cars fall the same way every time because their physics is worked out once with Rapier.</li>
+      <li><b>Other looks.</b> The same scene can be drawn as an ink storyboard, pencil on the figures, soft ghosts, or an empty plate.</li>
+      <li><b>Measured, not typed.</b> Every camera number on a card comes from the camera that renders the frame, and a check catches feet that slide and bodies that pass through each other.</li>
+      <li><b>Then the video model.</b> The clip goes in as the reference video, with a photo and a prompt that says what everything really is. It returns a 480p draft; a 1080p final is only made from a draft you approve.</li>
+    </ol>
+    <p class="mut">The renderer's source is not in this folder. The clips, the notes and the prompts are everything you need to use the moves.</p>
+  </details>
+  <p id="empty" class="hidden" style="padding:40px 0;color:var(--mut);font-size:16px">No moves match that search. Clear the box to see everything.</p>
+  <div id="root"></div>
+  <section class="fam sk" id="camonly"></section>
+  <section class="fam sk" id="sketches"></section>
+</main>
+
+<footer><div class="wrap">
+  <p>Examples are 480p drafts made with Seedance 2.5. Some show real products and brand marks only as examples of what a model can do; the marks belong to their owners and are not part of the open licence. See the README for the licence and how to add a move.</p>
+</div></footer>
+
+<script src="data.js"></script>
+<script>
+(function(){
+  var G = window.GALLERY, cards = G.cards, root = document.getElementById('root'), bar = document.getElementById('bar');
+  var FAMS = Object.keys(G.families).sort(function(a,b){ return a==='SHOW'?-1:b==='SHOW'?1:0; }), state = {fam:'ALL', q:''};
+  function el(t, a, kids){ var e=document.createElement(t); if(a) for(var k in a){ if(k==='text') e.textContent=a[k]; else if(k==='class') e.className=a[k]; else e.setAttribute(k,a[k]); } (kids||[]).forEach(function(c){ if(c) e.appendChild(c); }); return e; }
+  function vid(src, poster, label){
+    var f = el('figure'), v = el('video',{muted:'',playsinline:'',preload:'none','data-src':src}); v.muted=true;
+    if(poster) v.setAttribute('poster', poster);
+    f.appendChild(v); if(label) f.appendChild(el('figcaption',{text:label})); return f;
+  }
+  function copy(btn, text){ btn.addEventListener('click', function(){ (navigator.clipboard?navigator.clipboard.writeText(text):Promise.reject()).then(function(){ btn.textContent='Copied'; setTimeout(function(){btn.textContent='Copy prompt'},1400); }, function(){}); }); }
+  function card(c){
+    var a = el('article',{class:'card','data-fam':c.family,'data-text':(c.id+' '+c.name+' '+c.says+' '+c.use).toLowerCase()});
+    var m = el('div',{class:'media sync'+(c.result?'':' one')});
+    m.appendChild(vid(c.pill, c.poster, 'The 3D move'));
+    if(c.result) m.appendChild(vid(c.result, null, 'What the model made'));
+    a.appendChild(m);
+    var b = el('div',{class:'body'});
+    var h = el('h3',{text:c.name}); h.appendChild(el('small',{text:c.id+' · '+c.seconds+' s'}));
+    if(c.verdict==='good') h.appendChild(el('span',{class:'tag good',text:'reviewed: good'}));
+    b.appendChild(h);
+    if(c.says) b.appendChild(el('p',{class:'says',text:c.says}));
+    if(c.seen && c.seen.length) b.appendChild(el('p',{class:'says',style:'font-size:13px;color:var(--mut)',text:'Seen in: '+c.seen.join(', ')}));
+    if(c.inspiredBy) b.appendChild(el('p',{class:'says',style:'font-size:13px;color:var(--mut)',text:c.inspiredBy+'.'}));
+    if(c.note) b.appendChild(el('p',{class:'says',style:'color:var(--mut);font-size:13px',text:c.note}));
+    if(c.chain){ var ex=el('div',{class:'extras sync'}); c.chain.forEach(function(s){ ex.appendChild(el('figure',null,[ (function(){var f=vid(s.video,null,null); f.querySelector('video').style.aspectRatio='2.2/1'; return f.firstChild;})(), el('figcaption',{text:s.label}) ])); }); b.appendChild(ex); }
+    var d = el('details'); d.appendChild(el('summary',{text:'Use it for, numbers, prompt'}));
+    if(c.use) d.appendChild(el('p',null,[el('b',{text:'Use it for  '}), document.createTextNode(c.use)]));
+    if(c.numbers) d.appendChild(el('p',null,[el('b',{text:'Numbers  '}), document.createTextNode(c.numbers)]));
+    if(c.avoid) d.appendChild(el('p',null,[el('b',{text:'Avoid  '}), document.createTextNode(c.avoid)]));
+    d.appendChild(el('p',null,[el('a',{href:c.pill,download:c.id+'-pills.mp4',text:'Download the pill clip'})]));
+    if(c.sources && c.sources.length){ var sp=el('p',null,[el('b',{text:'Sources  '})]); c.sources.forEach(function(x,i){ if(i) sp.appendChild(document.createTextNode(' · ')); sp.appendChild(el('a',{href:x.url,target:'_blank',rel:'noopener',text:x.title})); }); d.appendChild(sp); }
+    if(c.prompt){ var bt=el('button',{class:'copy',type:'button',text:'Copy prompt'}); copy(bt,c.prompt); d.appendChild(bt); d.appendChild(el('pre',{text:c.prompt})); }
+    b.appendChild(d); a.appendChild(b); return a;
+  }
+  var secs = {};
+  FAMS.forEach(function(f){ var s=el('section',{class:'fam',id:f,'data-fam':f}); s.appendChild(el('h2',{text:G.families[f]})); if(G.familyNotes&&G.familyNotes[f]) s.appendChild(el('p',{class:'fnote',text:G.familyNotes[f]})); s.appendChild(el('p',{class:'count',text:''})); var g=el('div',{class:'grid'}); s.appendChild(g); root.appendChild(s); secs[f]={s:s,g:g}; });
+  cards.forEach(function(c){ secs[c.family].g.appendChild(card(c)); });
+  function chip(label, key){ var b=el('button',{class:'chip',type:'button','aria-pressed':String(state.fam===key),text:label}); b.addEventListener('click',function(){ state.fam=key; render(); }); b.dataset.key=key; return b; }
+  var chips = [chip('All','ALL')].concat(FAMS.map(function(f){ return chip(G.families[f], f); })).concat([chip('Camera only','CAMONLY'),chip('Sketches','SKETCHES')]);
+  chips.forEach(function(c){ bar.appendChild(c); });
+  var search = el('input',{type:'search',placeholder:'Search moves','aria-label':'Search moves'}); bar.appendChild(search);
+  var count = el('span',{class:'count'}); bar.appendChild(count);
+  search.addEventListener('input', function(){ state.q = search.value.trim().toLowerCase(); render(); });
+  // sketches: everything drawn lives here, apart from the 3D clips
+  var lk = document.getElementById('sketches');
+  function fig(kind, src, cap, cls){ var f=el('figure',{class:cls||''}); if(kind==='img'){ f.appendChild(el('img',{src:src,loading:'lazy',alt:cap})); } else { var v=el('video',{muted:'',playsinline:'',preload:'none','data-src':src}); v.muted=true; f.appendChild(v); } f.appendChild(el('figcaption',{text:cap})); return f; }
+  function none(cap, msg){ var f=el('figure'); f.appendChild(el('div',{class:'none',text:msg})); f.appendChild(el('figcaption',{text:cap})); return f; }
+  // ---- hero: the same move at three stages, side by side, playing in sync
+  (function(){
+    var H=G.hero, root=document.getElementById('hero'); if(!H||!root) return;
+    var wrap=el('div',{class:'hero3wrap'});
+    var row=el('div',{class:'hero3 sync'});
+    H.layers.forEach(function(L,i){
+      var col=el('div',{class:'h3col'});
+      col.appendChild(el('div',{class:'h3step',text:'Step '+(i+1)}));
+      var f=el('figure'); var v=el('video',{muted:'',playsinline:'',preload:'none','data-src':L.video,'aria-label':L.label}); v.muted=true; f.appendChild(v); col.appendChild(f);
+      col.appendChild(el('div',{class:'h3label',text:L.label}));
+      col.appendChild(el('p',{class:'h3text',text:L.text}));
+      row.appendChild(col);
+      if(i<H.layers.length-1) row.appendChild(el('div',{class:'h3arrow','aria-hidden':'true',text:'\u2192'}));
+    });
+    wrap.appendChild(row);
+    wrap.appendChild(el('p',{class:'hint',text:'The same move, the same camera, three stages. This one: '+H.name+'.'}));
+    root.appendChild(wrap);
+  })();
+
+  // ---- camera moves with no subject
+  var co = document.getElementById('camonly');
+  co.appendChild(el('h2',{text:'Camera moves with no subject'}));
+  co.appendChild(el('p',{class:'lede2',text:'No people, no product: only the camera move, in grey 3D. On the right, what the model made when the prompt put a person from a photo into that same camera move.'}));
+  co.appendChild(el('div',{class:'colhead'},[el('span',{text:'What we sent: the camera move alone'}),el('span',{text:'What the model made'})]));
+  (G.cameraOnly||[]).forEach(function(c){
+    var t=el('h4',{class:'pair-title',text:c.name}); t.appendChild(el('small',{text:c.id})); co.appendChild(t);
+    var g=el('div',{class:'cmp sync'}); var two=el('div',{class:'two'});
+    two.appendChild(fig('video',c.clip,'Camera move, no people')); two.appendChild(fig('video',c.made,'Made from it, person added by the prompt'));
+    g.appendChild(two); co.appendChild(g);
+  });
+  lk.appendChild(el('h2',{text:'Sketches'}));
+  lk.appendChild(el('p',{class:'lede2',text:'Instead of the pill clip, we also tried sending a drawing. In every row, what we sent is on the left and what the model made is on the right. In our tests the pill clip held every cut to the frame, while a drawing kept the story but let the cuts drift by about half a second.'}));
+  // ---- overview first: the same move drawn five ways
+  lk.appendChild(el('h3',{text:'Overview: the same move drawn five ways'}));
+  lk.appendChild(el('p',{class:'lede2',text:'Pills, pencil on the figures, ink drawing, soft ghosts, and an empty plate. Each look hands the model a different amount of body to copy. The details follow below.'}));
+  var OV=[['pills','Pills'],['pencil','Pencil on the figures'],['ink','Ink drawing'],['ghost','Soft ghosts'],['plate','Empty plate (no people)']];
+  (G.looksFull||[]).forEach(function(m){
+    var t=el('h4',{class:'pair-title',text:m.name}); t.appendChild(el('small',{text:m.id})); lk.appendChild(t);
+    var row=el('div',{class:'lrow sync'});
+    OV.forEach(function(o){ var r=m.rows.filter(function(x){return x.key===o[0]})[0]; var u=r&&r.runs.filter(function(x){return x.kind==='video'})[0]; if(u) row.appendChild(fig('video',u.input,o[1])); });
+    lk.appendChild(row);
+  });
+  // ---- part 1: one move at a time
+  lk.appendChild(el('h3',{text:'The details: what we sent and what the model made'}));
+  var tabs=el('div',{class:'tabs'}); lk.appendChild(tabs);
+  var body=el('div',{class:'lbody'}); lk.appendChild(body);
+  var MAIN={pills:1,pencil:1,ink:1};
+  function pairBlock(u){
+    var g=el('div',{class:'cmp sync'});
+    g.appendChild(el('div',{class:'cmplab',text:u.inputLabel}));
+    var two=el('div',{class:'two'});
+    two.appendChild(u.kind==='sheet'?fig('img',u.input,'What we sent','sheet'):fig('video',u.input,'What we sent'));
+    two.appendChild(fig('video',u.output,'What the model made'));
+    g.appendChild(two); return g;
+  }
+  function showMove(i){
+    body.querySelectorAll('.sync').forEach(stopGroup);
+    body.innerHTML='';
+    var m=G.looksFull[i];
+    [].forEach.call(tabs.children,function(b,k){ b.setAttribute('aria-pressed',String(k===i)); });
+    body.appendChild(el('div',{class:'colhead'},[el('span',{text:'What we sent'}),el('span',{text:'What the model made'})]));
+    m.rows.filter(function(r){return MAIN[r.key]}).forEach(function(r){
+      body.appendChild(el('div',{class:'rowlabel',text:r.label}));
+      r.runs.forEach(function(u){ body.appendChild(pairBlock(u)); });
+    });
+    var more=m.rows.filter(function(r){return !MAIN[r.key]});
+    if(more.length){
+      var d=el('details',{class:'moredet'}); d.appendChild(el('summary',{text:'More ways we tried this move ('+more.length+')'}));
+      more.forEach(function(r){ d.appendChild(el('div',{class:'rowlabel',text:r.label})); r.runs.forEach(function(u){ d.appendChild(pairBlock(u)); }); });
+      body.appendChild(d);
+    }
+    if(window.__io) body.querySelectorAll('.sync').forEach(function(g){ window.__io.observe(g); });
+    d && d.addEventListener('toggle',function(){ if(window.__io) body.querySelectorAll('.sync').forEach(function(g){ window.__io.observe(g); }); });
+  }
+  (G.looksFull||[]).forEach(function(m,i){ var b=el('button',{class:'chip',type:'button','aria-pressed':'false',text:m.name}); b.addEventListener('click',function(){ showMove(i); }); tabs.appendChild(b); });
+  // ---- part 2: other moves, drawing to video
+  lk.appendChild(el('h3',{text:'Other moves we drew'}));
+  lk.appendChild(el('p',{class:'lede2',text:'Left: the contact sheet we sent. Middle: what the model made from it. Right: what it made from the pill clip, for comparison.'}));
+  lk.appendChild(el('div',{class:'colhead three'},[el('span',{text:'What we sent'}),el('span',{text:'Made from the drawing'}),el('span',{text:'Made from the pill clip'})]));
+  (G.pairs||[]).forEach(function(p){
+    var t=el('h4',{class:'pair-title',text:p.name}); t.appendChild(el('small',{text:p.id})); lk.appendChild(t);
+    var g=el('div',{class:'three sync'});
+    g.appendChild(fig('img',p.sheet,'The contact sheet','sheet'));
+    g.appendChild(p.sketchOutput?fig('video',p.sketchOutput,'Made from the drawing'):none('Made from the drawing','Not made'));
+    g.appendChild(p.pillOutput?fig('video',p.pillOutput,'Made from the pill clip'):none('Made from the pill clip','No example yet'));
+    lk.appendChild(g);
+  });
+  setTimeout(function(){ if(G.looksFull&&G.looksFull.length) showMove(0); },0);
+  function render(){
+    var n=0;
+    chips.forEach(function(c){ c.setAttribute('aria-pressed', String(c.dataset.key===state.fam)); });
+    FAMS.forEach(function(f){ var vis=0; secs[f].g.querySelectorAll('article').forEach(function(a){ var ok=(state.fam==='ALL'||state.fam===f)&&(!state.q||a.dataset.text.indexOf(state.q)>-1); a.classList.toggle('hidden',!ok); if(ok) vis++; }); secs[f].s.classList.toggle('hidden', vis===0); secs[f].s.querySelector('p.count').textContent = vis+' '+(vis===1?'move':'moves'); n+=vis; });
+    lk.classList.toggle('hidden', !(state.fam==='ALL'||state.fam==='SKETCHES')||!!state.q);
+    co.classList.toggle('hidden', !(state.fam==='ALL'||state.fam==='CAMONLY')||!!state.q);
+    if(state.fam==='SKETCHES'||state.fam==='CAMONLY') FAMS.forEach(function(f){ secs[f].s.classList.add('hidden'); });
+    document.getElementById('empty').classList.toggle('hidden', !(n===0 && state.fam!=='SKETCHES' && state.fam!=='CAMONLY'));
+    count.textContent = (state.fam==='SKETCHES'?(G.pairs||[]).length+' sketches':state.fam==='CAMONLY'?(G.cameraOnly||[]).length+' camera moves':n+' shown');
+  }
+  render();
+  // every group of videos is locked to one clock: all start at 0 together, a follower that drifts is pulled back to the leader,
+  // and the whole group restarts together when the longest clip ends. Only groups on screen run.
+  function startGroup(g){
+    var vs=[].slice.call(g.querySelectorAll('video')); if(!vs.length || g._run) return; g._run=true; g._gen=(g._gen||0)+1; var gen=g._gen;
+    vs.forEach(function(v){ if(!v.src && v.dataset.src){ v.preload='auto'; v.src=v.dataset.src; } v.loop=false; v.muted=true; });
+    function ready(v){ return v.readyState>=3 ? Promise.resolve() : new Promise(function(res){ var d=false; function f(){ if(!d){ d=true; res(); } } v.addEventListener('canplay',f,{once:true}); v.addEventListener('error',f,{once:true}); setTimeout(f,8000); }); }
+    function leader(){ var l=vs[0]; vs.forEach(function(v){ if((v.duration||0)>(l.duration||0)) l=v; }); return l; }
+    function go(){
+      if(!g._run || g._gen!==gen) return;
+      vs.forEach(function(v){ try{ v.pause(); v.currentTime=0; }catch(e){} });
+      Promise.all(vs.map(function(v){ return v.readyState>=2 ? Promise.resolve() : ready(v); })).then(function(){
+        if(!g._run || g._gen!==gen) return;
+        vs.forEach(function(v){ var p=v.play(); if(p&&p.catch) p.catch(function(){}); });
+      });
+    }
+    Promise.all(vs.map(ready)).then(function(){
+      if(!g._run || g._gen!==gen) return;
+      go();
+      g._tick=setInterval(function(){
+        if(!g._run || g._gen!==gen){ clearInterval(g._tick); return; }
+        var L=leader(); if(!L || !L.duration) return;
+        var allEnded=vs.every(function(v){ return v.ended || (v.duration && v.currentTime>=v.duration-0.05) || v.error; });
+        if(allEnded || L.ended){ go(); return; }
+        vs.forEach(function(v){ if(v!==L && !v.ended && !v.paused && Math.abs(v.currentTime-L.currentTime)>0.1 && L.currentTime<(v.duration||1e9)-0.1){ try{ v.currentTime=L.currentTime; }catch(e){} } });
+      },120);
+    });
+  }
+  function stopGroup(g){ g._run=false; clearInterval(g._tick); g.querySelectorAll('video').forEach(function(v){ v.pause(); }); }
+  var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting) startGroup(e.target); else stopGroup(e.target); }); }, {rootMargin:'120px'});
+  window.__io=io; document.querySelectorAll('.sync').forEach(function(g){ io.observe(g); });
+  document.querySelectorAll('video').forEach(function(v){ v.addEventListener('click', function(){ v.controls=true; v.paused?v.play():v.pause(); }); });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,1295 @@
+{
+ "built": [
+  {
+   "id": "ACT01-BulletTimeOrbit",
+   "has_pill": true,
+   "has_result": true,
+   "has_sketch": true,
+   "prompts": [
+    "camera-only-sketch.txt",
+    "camera-only-video-1.txt",
+    "camera-only-video-2.txt",
+    "ink-sketch-recovered-sheet.txt",
+    "sketch-recovered-sheet.txt",
+    "sketch.txt",
+    "video-1.txt",
+    "video-2.txt",
+    "video-recovered-video.txt"
+   ]
+  },
+  {
+   "id": "ACT02-Snorricam",
+   "has_pill": true,
+   "has_result": true,
+   "has_sketch": false,
+   "prompts": [
+    "video.txt"
+   ]
+  },
+  {
+   "id": "ACT03-CrashZoomFight",
+   "has_pill": true,
+   "has_result": true,
+   "has_sketch": false,
+   "prompts": [
+    "video.txt"
+   ]
+  },
+  {
+   "id": "ACT04-SprintDollyZoom",
+   "has_pill": true,
+   "has_result": true,
+   "has_sketch": true,
+   "prompts": [
+    "ink-sketch-recovered-sheet.txt",
+    "video.txt"
+   ]
+  },
+  {
+   "id": "ACT05-ParkourTrack",
+   "has_pill": true,
+   "has_result": true,
+   "has_sketch": false,
+   "prompts": [
+    "video.txt"
+   ]
+  },
+  {
+   "id": "ACT06-HeroLowArc",
+   "has_pill": true,
+   "has_result": true,
+   "has_sketch": false,
+   "prompts": [
+    "video.txt"
+   ]
+  },
+  {
+   "id": "ACT07-FightCoverage",
+   "has_pill": true,
+   "has_result": false,
+   "has_sketch": false,
+   "prompts": [
+    "video-1.txt",
+    "video-2.txt",
+    "video-3.txt",
+    "video-4.txt"
+   ]
+  },
+  {
+   "id": "ACT08-FallDrop",
+   "has_pill": true,
+   "has_result": true,
+   "has_sketch": false,
+   "prompts": [
+    "video.txt"
+   ]
+  },
+  {
+   "id": "ANG01-ExtremeWide",
+   "has_pill": true,
+   "has_result": false,
+   "has_sketch": false,
+   "prompts": []
+  },
+  {
+   "id": "ANG02-Wide",
+   "has_pill": true,
+   "has_result": false,
+   "has_sketch": false,
+   "prompts": []
+  },
+  {
+   "id": "ANG03-Full",
+   "has_pill": true,
+   "has_result": false,
+   "has_sketch": false,
+   "prompts": []
+  },
+  {
+   "id": "ANG04-Cowboy",
+   "has_pill": true,
+   "has_result": false,
+   "has_sketch": false,
+   "prompts": []
+  },
+  {
+   "id": "ANG05-Medium",
+   "has_pill": true,
+   "has_result": false,
+   "has_sketch": false,
+   "prompts": []
+  },
+  {
+   "id": "ANG06-MediumCloseUp",
+   "has_pill": true,
+   "has_result": true,
+   "has_sketch": false,
+   "prompts": [
+    "b-ang06-m.txt",
+    "b-ang06.txt"
+   ]
+  },
+  {
+   "id": "ANG07-CloseUp",
+   "has_pill": true,
+   "has_result": true,
+   "has_sketch": false,
+   "prompts": [
+    "b-ang07-m.txt",
+    "b-ang07.txt"
+   ]
+  },
+  {
+   "id": "ANG08-ExtremeCloseUp",
+   "has_pill": true,
+   "has_result": false,
+   "has_sketch": false,
+   "prompts": []
+  },
+  {
+   "id": "ANG10-EyeLevel",
+   "has_pill": true,
+   "has_result": true,
+   "has_sketch": false,
+   "prompts": [
+    "b-ang10-m.txt",
+    "b-ang10.txt"
+   ]
+  },
+  {
+   "id": "ANG11-BirdsEye",
+   "has_pill": true,
+   "has_result": false,
+   "has_sketch": false,
+   "prompts": []
+  },
+  {
+   "id": "ANG12-WormsEye",
+   "has_pill": true,
+   "has_result": false,
+   "has_sketch": false,
+   "prompts": []
+  },
+  {
+   "id": "ANG13-Profile",
+   "has_pill": true,
+   "has_result": true,
+   "has_sketch": false,
+   "prompts": [
+    "b-ang13-m.txt",
+    "b-ang13.txt"
+   ]
+  },
+  {
+   "id": "ANG14-ThreeQuarter",
+   "has_pill": true,
+   "has_result": false,
+   "has_sketch": false,
+   "prompts": []
+  },
+  {
+   "id": "ANG15-FromBehind",
+   "has_pill": true,
+   "has_result": false,
+   "has_sketch": false,
+   "prompts": []
+  },
+  {
+   "id": "ANG16-DutchLow",
+   "has_pill": true,
+   "has_result": false,
+   "has_sketch": false,
+   "prompts": []
+  },
+  {
+   "id": "ANG17-UpsideDown",
+   "has_pill": true,
+   "has_result": false,
+   "has_sketch": false,
+   "prompts": []
+  },
+  {
+   "id": "ANG18-TwoThirdsHigh",
+   "has_pill": true,
+   "has_result": false,
+   "has_sketch": false,
+   "prompts": []
+  },
+  {
+   "id": "ANG20-SuperWide",
+   "has_pill": true,
+   "has_result": false,
+   "has_sketch": false,
+   "prompts": []
+  },
+  {
+   "id": "ANG21-UltraWideCloseUp",
+   "has_pill": true,
+   "has_result": false,
+   "has_sketch": false,
+   "prompts": []
+  },
+  {
+   "id": "ANG22-Fisheye",
+   "has_pill": true,
+   "has_result": false,
+   "has_sketch": false,
+   "prompts": []
+  },
+  {
+   "id": "ANG23-FisheyeLow",
+   "has_pill": true,
+   "has_result": false,
+   "has_sketch": false,
+   "prompts": []
+  },
+  {
+   "id": "ANG24-Peephole",
+   "has_pill": true,
+   "has_result": false,
+   "has_sketch": false,
+   "prompts": []
+  },
+  {
+   "id": "ANG25-SecurityCam",
+   "has_pill": true,
+   "has_result": false,
+   "has_sketch": false,
+   "prompts": []
+  },
+  {
+   "id": "ANG26-LongLens",
+   "has_pill": true,
+   "has_result": false,
+   "has_sketch": false,
+   "prompts": []
+  },
+  {
+   "id": "ANG27-TelephotoCloseUp",
+   "has_pill": true,
+   "has_result": false,
+   "has_sketch": false,
+   "prompts": []
+  },
+  {
+   "id": "ANG30-HipLevel",
+   "has_pill": true,
+   "has_result": false,
+   "has_sketch": false,
+   "prompts": []
+  },
+  {
+   "id": "ANG31-KneeLevel",
+   "has_pill": true,
+   "has_result": false,
+   "has_sketch": false,
+   "prompts": []
+  },
+  {
+   "id": "ANG32-GroundLevelWalk",
+   "has_pill": true,
+   "has_result": false,
+   "has_sketch": false,
+   "prompts": []
+  },
+  {
+   "id": "ANG33-ShoulderLevel",
+   "has_pill": true,
+   "has_result": false,
+   "has_sketch": false,
+   "prompts": []
+  },
+  {
+   "id": "ANG34-HighThreeQuarter",
+   "has_pill": true,
+   "has_result": false,
+   "has_sketch": false,
+   "prompts": []
+  },
+  {
+   "id": "ANG35-LowThreeQuarter",
+   "has_pill": true,
+   "has_result": false,
+   "has_sketch": false,
+   "prompts": []
+  },
+  {
+   "id": "ANG36-OverTheHead",
+   "has_pill": true,
+   "has_result": false,
+   "has_sketch": false,
+   "prompts": []
+  },
+  {
+   "id": "ANG37-Symmetrical",
+   "has_pill": true,
+   "has_result": false,
+   "has_sketch": false,
+   "prompts": []
+  },
+  {
+   "id": "ANG38-FramedShot",
+   "has_pill": true,
+   "has_result": false,
+   "has_sketch": false,
+   "prompts": []
+  },
+  {
+   "id": "ANG39-LeadingLines",
+   "has_pill": true,
+   "has_result": false,
+   "has_sketch": false,
+   "prompts": []
+  },
+  {
+   "id": "ANG40-SlightLowCloseUp",
+   "has_pill": true,
+   "has_result": false,
+   "has_sketch": false,
+   "prompts": []
+  },
+  {
+   "id": "CAM01-LockedOff",
+   "has_pill": true,
+   "has_result": true,
+   "has_sketch": false,
+   "prompts": [
+    "video.txt"
+   ]
+  },
+  {
+   "id": "CAM02-PanWith",
+   "has_pill": true,
+   "has_result": true,
+   "has_sketch": false,
+   "prompts": [
+    "video.txt"
+   ]
+  },
+  {
+   "id": "CAM03-PushIn",
+   "has_pill": true,
+   "has_result": true,
+   "has_sketch": false,
+   "prompts": [
+    "video.txt"
+   ]
+  },
+  {
+   "id": "CAM04-PullOutReveal",
+   "has_pill": true,
+   "has_result": true,
+   "has_sketch": false,
+   "prompts": [
+    "video.txt"
+   ]
+  },
+  {
+   "id": "CAM05-DollyZoom",
+   "has_pill": true,
+   "has_result": true,
+   "has_sketch": false,
+   "prompts": [
+    "video.txt"
+   ]
+  },
+  {
+   "id": "CAM06-Orbit",
+   "has_pill": true,
+   "has_result": true,
+   "has_sketch": true,
+   "prompts": [
+    "camera-only-video.txt",
+    "ink-sketch-recovered-sheet.txt",
+    "video.txt"
+   ]
+  },
+  {
+   "id": "CAM07-CraneUp",
+   "has_pill": true,
+   "has_result": true,
+   "has_sketch": false,
+   "prompts": [
+    "video.txt"
+   ]
+  },
+  {
+   "id": "CAM08-CraneDown",
+   "has_pill": true,
+   "has_result": true,
+   "has_sketch": false,
+   "prompts": [
+    "video.txt"
+   ]
+  },
+  {
+   "id": "CAM09-SteadicamFollow",
+   "has_pill": true,
+   "has_result": true,
+   "has_sketch": false,
+   "prompts": [
+    "video.txt"
+   ]
+  },
+  {
+   "id": "CAM10-SteadicamLead",
+   "has_pill": true,
+   "has_result": true,
+   "has_sketch": false,
+   "prompts": [
+    "video.txt"
+   ]
+  },
+  {
+   "id": "CAM11-TrackingSide",
+   "has_pill": true,
+   "has_result": true,
+   "has_sketch": false,
+   "prompts": [
+    "video.txt"
+   ]
+  },
+  {
+   "id": "CAM12-OTSPair",
+   "has_pill": true,
+   "has_result": true,
+   "has_sketch": false,
+   "prompts": [
+    "video.txt"
+   ]
+  },
+  {
+   "id": "CAM13-WhipPan",
+   "has_pill": true,
+   "has_result": true,
+   "has_sketch": false,
+   "prompts": [
+    "video.txt"
+   ]
+  },
+  {
+   "id": "CAM14-Handheld",
+   "has_pill": true,
+   "has_result": true,
+   "has_sketch": false,
+   "prompts": [
+    "video.txt"
+   ]
+  },
+  {
+   "id": "CAM15-ChaseDrone",
+   "has_pill": true,
+   "has_result": true,
+   "has_sketch": true,
+   "prompts": [
+    "ink-sketch-recovered-sheet.txt",
+    "video.txt"
+   ]
+  },
+  {
+   "id": "CAM16-FPV",
+   "has_pill": true,
+   "has_result": true,
+   "has_sketch": false,
+   "prompts": [
+    "video.txt"
+   ]
+  },
+  {
+   "id": "CAM17-SlowZoomIn",
+   "has_pill": true,
+   "has_result": true,
+   "has_sketch": false,
+   "prompts": [
+    "v10-cam17-m.txt",
+    "v10-cam17-t.txt",
+    "zoom-in-p2.txt",
+    "zoom-in-p3.txt",
+    "zoom-in-t2.txt",
+    "zoom-in.txt"
+   ]
+  },
+  {
+   "id": "CAM18-SlowZoomOut",
+   "has_pill": true,
+   "has_result": true,
+   "has_sketch": false,
+   "prompts": [
+    "v11-cam18-m.txt",
+    "v11-cam18-t.txt"
+   ]
+  },
+  {
+   "id": "CAM19-TiltUp",
+   "has_pill": true,
+   "has_result": true,
+   "has_sketch": false,
+   "prompts": [
+    "tilt-up-p2.txt",
+    "tilt-up-p3.txt",
+    "tilt-up-t2.txt",
+    "tilt-up.txt",
+    "v11-cam19-m.txt",
+    "v11-cam19-t.txt"
+   ]
+  },
+  {
+   "id": "CAM20-TiltDown",
+   "has_pill": true,
+   "has_result": true,
+   "has_sketch": false,
+   "prompts": [
+    "v15-cam20-m.txt",
+    "v15-cam20-t.txt"
+   ]
+  },
+  {
+   "id": "CAM21-PanReveal",
+   "has_pill": true,
+   "has_result": true,
+   "has_sketch": false,
+   "prompts": [
+    "pan-reveal-p3.txt",
+    "pan-reveal-t.txt",
+    "pan-reveal-t2.txt",
+    "pan-reveal-v2.txt",
+    "pan-reveal.txt",
+    "v10-cam21-m.txt",
+    "v10-cam21-t.txt"
+   ]
+  },
+  {
+   "id": "CAM22-PedestalUp",
+   "has_pill": true,
+   "has_result": true,
+   "has_sketch": false,
+   "prompts": [
+    "v3-cam22-m.txt",
+    "v3-cam22-t.txt",
+    "v4-cam22-m.txt",
+    "v4-cam22-t.txt",
+    "v6-cam22-m.txt",
+    "v6-cam22-t.txt",
+    "v7-cam22-m.txt",
+    "v7-cam22-t.txt",
+    "v8-cam22-m.txt",
+    "v8-cam22-t.txt",
+    "v9-cam22-m.txt",
+    "v9-cam22-t.txt"
+   ]
+  },
+  {
+   "id": "CAM23-PedestalDown",
+   "has_pill": true,
+   "has_result": true,
+   "has_sketch": false,
+   "prompts": [
+    "v3-cam23-m.txt",
+    "v3-cam23-t.txt",
+    "v4-cam23-m.txt",
+    "v4-cam23-t.txt",
+    "v6-cam23-m.txt",
+    "v6-cam23-t.txt"
+   ]
+  },
+  {
+   "id": "CAM24-ShortArc",
+   "has_pill": true,
+   "has_result": true,
+   "has_sketch": false,
+   "prompts": [
+    "short-arc-p2.txt",
+    "short-arc-p3.txt",
+    "short-arc-t2.txt",
+    "short-arc.txt",
+    "v12-cam24-m.txt",
+    "v12-cam24-t.txt"
+   ]
+  },
+  {
+   "id": "CAM25-ArcAndRise",
+   "has_pill": true,
+   "has_result": true,
+   "has_sketch": false,
+   "prompts": [
+    "arc-rise-p2.txt",
+    "arc-rise-p3.txt",
+    "arc-rise-t.txt",
+    "arc-rise-t2.txt",
+    "arc-rise-v2.txt",
+    "arc-rise.txt",
+    "v10-cam25-m.txt",
+    "v10-cam25-t.txt"
+   ]
+  },
+  {
+   "id": "CAM26-DutchAngle",
+   "has_pill": true,
+   "has_result": false,
+   "has_sketch": false,
+   "prompts": []
+  },
+  {
+   "id": "CAM27-DutchPush",
+   "has_pill": true,
+   "has_result": true,
+   "has_sketch": false,
+   "prompts": [
+    "v13-cam27-m.txt",
+    "v13-cam27-t.txt",
+    "v14-cam27-t.txt"
+   ]
+  },
+  {
+   "id": "CAM28-BarrelRoll",
+   "has_pill": true,
+   "has_result": true,
+   "has_sketch": false,
+   "prompts": [
+    "barrel-roll-p2.txt",
+    "barrel-roll-p3.txt",
+    "barrel-roll-t.txt",
+    "barrel-roll-t2.txt",
+    "barrel-roll-v2.txt",
+    "barrel-roll.txt",
+    "v13-cam28-m.txt",
+    "v13-cam28-t.txt"
+   ]
+  },
+  {
+   "id": "CAM29-LowAngleHero",
+   "has_pill": true,
+   "has_result": false,
+   "has_sketch": false,
+   "prompts": []
+  },
+  {
+   "id": "CAM30-HighAngle",
+   "has_pill": true,
+   "has_result": false,
+   "has_sketch": false,
+   "prompts": []
+  },
+  {
+   "id": "CAM31-OverheadRise",
+   "has_pill": true,
+   "has_result": false,
+   "has_sketch": false,
+   "prompts": []
+  },
+  {
+   "id": "CAM32-RunAndGun",
+   "has_pill": true,
+   "has_result": true,
+   "has_sketch": false,
+   "prompts": [
+    "v3-cam32-m.txt",
+    "v3-cam32-t.txt",
+    "v4-cam32-m.txt",
+    "v4-cam32-t.txt",
+    "v6-cam32-m.txt",
+    "v6-cam32-t.txt"
+   ]
+  },
+  {
+   "id": "CAM33-POVWalk",
+   "has_pill": true,
+   "has_result": false,
+   "has_sketch": false,
+   "prompts": []
+  },
+  {
+   "id": "CAM34-POVLookAround",
+   "has_pill": true,
+   "has_result": false,
+   "has_sketch": false,
+   "prompts": []
+  },
+  {
+   "id": "CAM35-OTSPushIn",
+   "has_pill": true,
+   "has_result": false,
+   "has_sketch": false,
+   "prompts": []
+  },
+  {
+   "id": "CAM36-TwoShotTruck",
+   "has_pill": true,
+   "has_result": true,
+   "has_sketch": false,
+   "prompts": [
+    "v12-cam36-m.txt",
+    "v12-cam36-t.txt"
+   ]
+  },
+  {
+   "id": "CAM37-SliderPortrait",
+   "has_pill": true,
+   "has_result": true,
+   "has_sketch": false,
+   "prompts": [
+    "v12-cam37-m.txt",
+    "v12-cam37-t.txt"
+   ]
+  },
+  {
+   "id": "CAM38-PushToCloseUp",
+   "has_pill": true,
+   "has_result": true,
+   "has_sketch": false,
+   "prompts": [
+    "v3-cam38-m.txt",
+    "v3-cam38-t.txt",
+    "v4-cam38-m.txt",
+    "v4-cam38-t.txt",
+    "v6-cam38-m.txt",
+    "v6-cam38-t.txt",
+    "v7-cam38-m.txt",
+    "v7-cam38-t.txt"
+   ]
+  },
+  {
+   "id": "CAM39-WhipTilt",
+   "has_pill": true,
+   "has_result": true,
+   "has_sketch": false,
+   "prompts": [
+    "v15-cam39-m.txt",
+    "v15-cam39-t.txt"
+   ]
+  },
+  {
+   "id": "CAM40-ReverseDollyZoom",
+   "has_pill": true,
+   "has_result": true,
+   "has_sketch": false,
+   "prompts": [
+    "v13-cam40-m.txt",
+    "v13-cam40-t.txt"
+   ]
+  },
+  {
+   "id": "CAM41-DroneOrbitHigh",
+   "has_pill": true,
+   "has_result": false,
+   "has_sketch": false,
+   "prompts": []
+  },
+  {
+   "id": "CAM42-DroneDive",
+   "has_pill": true,
+   "has_result": true,
+   "has_sketch": false,
+   "prompts": [
+    "v3-cam42-m.txt",
+    "v3-cam42-t.txt",
+    "v4-cam42-m.txt",
+    "v4-cam42-t.txt",
+    "v6-cam42-m.txt",
+    "v6-cam42-t.txt"
+   ]
+  },
+  {
+   "id": "CAM43-DroneRevealOverTerrace",
+   "has_pill": true,
+   "has_result": false,
+   "has_sketch": false,
+   "prompts": []
+  },
+  {
+   "id": "CAM44-DroneRiseUp",
+   "has_pill": true,
+   "has_result": false,
+   "has_sketch": false,
+   "prompts": []
+  },
+  {
+   "id": "CAM45-LowFollow",
+   "has_pill": true,
+   "has_result": true,
+   "has_sketch": false,
+   "prompts": [
+    "v11-cam45-m.txt",
+    "v11-cam45-t.txt"
+   ]
+  },
+  {
+   "id": "CAM46-RackBetweenPeople",
+   "has_pill": true,
+   "has_result": false,
+   "has_sketch": false,
+   "prompts": []
+  },
+  {
+   "id": "CAM47-HandheldPushIn",
+   "has_pill": true,
+   "has_result": true,
+   "has_sketch": false,
+   "prompts": [
+    "v15-cam47-m.txt",
+    "v15-cam47-t.txt"
+   ]
+  },
+  {
+   "id": "CAM48-OrbitWalk",
+   "has_pill": true,
+   "has_result": true,
+   "has_sketch": false,
+   "prompts": [
+    "v3-cam48-m.txt",
+    "v3-cam48-t.txt",
+    "v4-cam48-m.txt",
+    "v4-cam48-t.txt",
+    "v6-cam48-m.txt",
+    "v6-cam48-t.txt"
+   ]
+  },
+  {
+   "id": "FAM01-Booth360",
+   "has_pill": true,
+   "has_result": true,
+   "has_sketch": true,
+   "prompts": [
+    "sketch.txt",
+    "video-1.txt",
+    "video-2.txt",
+    "video-3.txt"
+   ]
+  },
+  {
+   "id": "FAM02-ExplosionWalk",
+   "has_pill": true,
+   "has_result": true,
+   "has_sketch": true,
+   "prompts": [
+    "sketch.txt",
+    "video-1.txt",
+    "video-2.txt",
+    "video-3.txt",
+    "video-recovered-blocks.txt",
+    "video-recovered-nodebris.txt",
+    "video-recovered-nofire.txt"
+   ]
+  },
+  {
+   "id": "FAM03-TrunkShot",
+   "has_pill": true,
+   "has_result": true,
+   "has_sketch": false,
+   "prompts": [
+    "video-recovered-capsule.txt"
+   ]
+  },
+  {
+   "id": "FAM04-LeapOfFaith",
+   "has_pill": true,
+   "has_result": true,
+   "has_sketch": true,
+   "prompts": [
+    "sketch-1.txt",
+    "sketch-2.txt",
+    "sketch-3.txt",
+    "video-recovered-film.txt",
+    "video-recovered-film2.txt",
+    "video.txt"
+   ]
+  },
+  {
+   "id": "FAM05-Bay360",
+   "has_pill": true,
+   "has_result": true,
+   "has_sketch": true,
+   "prompts": [
+    "sketch.txt",
+    "video-1.txt",
+    "video-2.txt"
+   ]
+  },
+  {
+   "id": "FAM06-PeterPanFlight",
+   "has_pill": true,
+   "has_result": true,
+   "has_sketch": true,
+   "prompts": [
+    "sketch.txt",
+    "video.txt"
+   ]
+  },
+  {
+   "id": "OBJ01-PushInObject",
+   "has_pill": true,
+   "has_result": true,
+   "has_sketch": false,
+   "prompts": [
+    "video.txt"
+   ]
+  },
+  {
+   "id": "OBJ02-OrbitHero",
+   "has_pill": true,
+   "has_result": true,
+   "has_sketch": false,
+   "prompts": [
+    "video.txt"
+   ]
+  },
+  {
+   "id": "OBJ03-CraneUpStatue",
+   "has_pill": true,
+   "has_result": true,
+   "has_sketch": false,
+   "prompts": [
+    "video.txt"
+   ]
+  },
+  {
+   "id": "OBJ04-TruckPastParallax",
+   "has_pill": true,
+   "has_result": true,
+   "has_sketch": false,
+   "prompts": [
+    "video.txt"
+   ]
+  },
+  {
+   "id": "OBJ05-TrackingCarLow",
+   "has_pill": true,
+   "has_result": true,
+   "has_sketch": false,
+   "prompts": [
+    "video.txt"
+   ]
+  },
+  {
+   "id": "OBJ06-TopDown",
+   "has_pill": true,
+   "has_result": true,
+   "has_sketch": false,
+   "prompts": [
+    "video.txt"
+   ]
+  },
+  {
+   "id": "OBJ07-RackFocus",
+   "has_pill": true,
+   "has_result": true,
+   "has_sketch": false,
+   "prompts": [
+    "video.txt"
+   ]
+  },
+  {
+   "id": "OBJ08-WipeReveal",
+   "has_pill": true,
+   "has_result": true,
+   "has_sketch": false,
+   "prompts": [
+    "video.txt"
+   ]
+  },
+  {
+   "id": "OBJ09-ThroughDoorway",
+   "has_pill": true,
+   "has_result": true,
+   "has_sketch": false,
+   "prompts": [
+    "video.txt"
+   ]
+  },
+  {
+   "id": "OBJ10-CrashZoom",
+   "has_pill": true,
+   "has_result": true,
+   "has_sketch": false,
+   "prompts": [
+    "video.txt"
+   ]
+  },
+  {
+   "id": "OBJ11-TiltUpTall",
+   "has_pill": true,
+   "has_result": true,
+   "has_sketch": false,
+   "prompts": [
+    "video.txt"
+   ]
+  },
+  {
+   "id": "OBJ12-FlybyPan",
+   "has_pill": true,
+   "has_result": true,
+   "has_sketch": false,
+   "prompts": [
+    "video.txt"
+   ]
+  },
+  {
+   "id": "OBJ13-MacroSlider",
+   "has_pill": true,
+   "has_result": true,
+   "has_sketch": false,
+   "prompts": [
+    "video.txt"
+   ]
+  },
+  {
+   "id": "OBJ14-FlyThroughWindow",
+   "has_pill": true,
+   "has_result": true,
+   "has_sketch": false,
+   "prompts": [
+    "video.txt"
+   ]
+  },
+  {
+   "id": "OBJ15-TopDownSpiral",
+   "has_pill": true,
+   "has_result": true,
+   "has_sketch": false,
+   "prompts": [
+    "video.txt"
+   ]
+  },
+  {
+   "id": "OBJ16-ProductSpin",
+   "has_pill": true,
+   "has_result": true,
+   "has_sketch": false,
+   "prompts": [
+    "video.txt"
+   ]
+  },
+  {
+   "id": "ONE01-CraneToFollowWhip",
+   "has_pill": true,
+   "has_result": true,
+   "has_sketch": false,
+   "prompts": [
+    "video.txt"
+   ]
+  },
+  {
+   "id": "ONE02-DroneDiveChase",
+   "has_pill": true,
+   "has_result": true,
+   "has_sketch": true,
+   "prompts": [
+    "ink-sketch-recovered-sheet.txt",
+    "video.txt"
+   ]
+  },
+  {
+   "id": "ONE03-InteriorOner",
+   "has_pill": true,
+   "has_result": true,
+   "has_sketch": false,
+   "prompts": [
+    "video.txt"
+   ]
+  },
+  {
+   "id": "ONE04-OrbitPushRack",
+   "has_pill": true,
+   "has_result": true,
+   "has_sketch": false,
+   "prompts": [
+    "video-1.txt",
+    "video-2.txt"
+   ]
+  },
+  {
+   "id": "PRD01-FrozenSplashOrbit",
+   "has_pill": true,
+   "has_result": false,
+   "has_sketch": true,
+   "prompts": []
+  },
+  {
+   "id": "PRD02-RobotArmSnap",
+   "has_pill": true,
+   "has_result": true,
+   "has_sketch": false,
+   "prompts": [
+    "video-1.txt",
+    "video-2.txt"
+   ]
+  },
+  {
+   "id": "PRD03-ExplodedBuild",
+   "has_pill": true,
+   "has_result": true,
+   "has_sketch": true,
+   "prompts": [
+    "video.txt"
+   ]
+  },
+  {
+   "id": "PRD04-ProbeFlyThrough",
+   "has_pill": true,
+   "has_result": true,
+   "has_sketch": false,
+   "prompts": [
+    "video.txt"
+   ]
+  },
+  {
+   "id": "PRD05-SkylineDive",
+   "has_pill": true,
+   "has_result": true,
+   "has_sketch": false,
+   "prompts": [
+    "video-1.txt",
+    "video-2.txt"
+   ]
+  },
+  {
+   "id": "PRD06-Glambot",
+   "has_pill": true,
+   "has_result": true,
+   "has_sketch": true,
+   "prompts": [
+    "sketch.txt",
+    "video-1.txt",
+    "video-2.txt"
+   ]
+  },
+  {
+   "id": "SC01-ForestClearing",
+   "has_pill": true,
+   "has_result": true,
+   "has_sketch": false,
+   "prompts": [
+    "video.txt"
+   ]
+  },
+  {
+   "id": "SC02-InteriorDialogue",
+   "has_pill": true,
+   "has_result": true,
+   "has_sketch": false,
+   "prompts": [
+    "video-1.txt",
+    "video-2.txt"
+   ]
+  },
+  {
+   "id": "SC03-StreetWalkTalk",
+   "has_pill": true,
+   "has_result": true,
+   "has_sketch": true,
+   "prompts": [
+    "ink-sketch-recovered-sheet.txt",
+    "video-1.txt",
+    "video-2.txt",
+    "video-3.txt"
+   ]
+  },
+  {
+   "id": "SC04-CarInterior",
+   "has_pill": true,
+   "has_result": true,
+   "has_sketch": true,
+   "prompts": [
+    "ink-sketch-recovered-sheet.txt",
+    "video.txt"
+   ]
+  },
+  {
+   "id": "SC05-SpaceFlyby",
+   "has_pill": true,
+   "has_result": true,
+   "has_sketch": false,
+   "prompts": [
+    "video.txt"
+   ]
+  },
+  {
+   "id": "SC06-RooftopChase",
+   "has_pill": true,
+   "has_result": true,
+   "has_sketch": false,
+   "prompts": [
+    "video.txt"
+   ]
+  },
+  {
+   "id": "SC07-AlleyFight",
+   "has_pill": true,
+   "has_result": true,
+   "has_sketch": false,
+   "prompts": [
+    "camera-only-video.txt",
+    "video.txt"
+   ]
+  },
+  {
+   "id": "SC08-HeistApproach",
+   "has_pill": true,
+   "has_result": true,
+   "has_sketch": true,
+   "prompts": [
+    "ink-sketch-recovered-sheet.txt",
+    "sketch.txt",
+    "video-1.txt",
+    "video-2.txt"
+   ]
+  },
+  {
+   "id": "SC09-StandoffDebris",
+   "has_pill": true,
+   "has_result": true,
+   "has_sketch": true,
+   "prompts": [
+    "ink-sketch-recovered-sheet.txt",
+    "video.txt"
+   ]
+  },
+  {
+   "id": "SC10-CarCrashBarrier",
+   "has_pill": true,
+   "has_result": true,
+   "has_sketch": false,
+   "prompts": [
+    "video.txt"
+   ]
+  },
+  {
+   "id": "SHOW01-TheHandoff",
+   "has_pill": true,
+   "has_result": true,
+   "has_sketch": true,
+   "prompts": [
+    "sketch-v2-sheet.txt",
+    "sketch-v3-sheet.txt",
+    "sketch-v4-sheet.txt",
+    "sketch-v5-sheet.txt",
+    "sketch-v6-sheet.txt",
+    "video-v1.txt",
+    "video-v2-video.txt",
+    "video-v3.txt"
+   ]
+  },
+  {
+   "id": "STORY02-DiveToShutter",
+   "has_pill": true,
+   "has_result": true,
+   "has_sketch": false,
+   "prompts": [
+    "story02-p-4k.txt",
+    "story02-p.txt",
+    "story02-t.txt"
+   ]
+  },
+  {
+   "id": "STORY03-TheGap",
+   "has_pill": true,
+   "has_result": true,
+   "has_sketch": false,
+   "prompts": [
+    "story03-ext-4k.txt",
+    "story03-ext.txt"
+   ]
+  }
+ ],
+ "not_covered_here": []
+}
