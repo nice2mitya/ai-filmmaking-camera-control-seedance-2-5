@@ -2,7 +2,8 @@
 
 **Direct the camera of an AI film made with Seedance 2.5, with a 3D camera you wrote in code.** 137 filmmaking camera moves: dolly, crane, orbit, whip pan, FPV, one-takes, action and famous shots. The move, speed, framing and cuts come from your code, not from the model's guess. The model still makes the people and the place.
 
-<p align="center"><img src="docs/assets/hero-three-stages.gif" alt="A grey 3D scene, the same scene with people as striped pills, and what the video model made from it" width="100%"></p>
+<p align="center"><img src="docs/assets/hero-three-stages.gif" alt="Left: the 3D pill clip we send. Middle: the same move drawn as a sketch. Right: the real video Seedance 2.5 made" width="100%"></p>
+<p align="center"><sub>Left: the pill clip we send. Middle: the sketch route, the same move drawn. Right: the real video Seedance 2.5 made from it.</sub></p>
 
 The trick is one sentence: **a reference video carries two things, where the camera goes and how the bodies move, and the model copies both. So give it a camera to follow and nobody to copy.** Every person and product in the 3D clip is a striped pill. The pill gives the model the place, the size, the facing and the timing, and has no body to copy. The prompt says what everything really is.
 
