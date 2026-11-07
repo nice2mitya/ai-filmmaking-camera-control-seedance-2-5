@@ -12,7 +12,7 @@ Writes
 
 Needs ffmpeg and Pillow. Nothing is sent anywhere. Usage: python3 tools/make_previews.py <repo dir> [--only ID,ID] [--skip-previews]
 """
-import concurrent.futures, json, os, subprocess, sys, tempfile
+import concurrent.futures, json, os, subprocess, sys, tempfile, uuid
 from PIL import Image, ImageDraw, ImageFont
 
 ROOT = os.path.abspath(sys.argv[1] if len(sys.argv) > 1 else ".")
@@ -36,7 +36,7 @@ def label_png(text, width, size=13):
     d = ImageDraw.Draw(im)
     d.rounded_rectangle((0, 0, w - 1, size + 8), radius=5, fill=(10, 10, 12, 210))
     d.text((7, 3), text, font=f, fill=(255, 255, 255, 255))
-    p = os.path.join(TMP, f"label_{abs(hash((text, width)))}.png")
+    p = os.path.join(TMP, f"label_{uuid.uuid4().hex}.png")
     im.save(p)
     return p
 
@@ -107,13 +107,13 @@ def preview(tid):
 
 def tasks():
     jobs = []
-    # hero
+    # hero: the pill clip, the sketch, and the real result (the same three things the Tein Previs page shows)
     hero_pill = os.path.join(T, "ACT01-BulletTimeOrbit", "pill.mp4")
-    hero_clay = os.path.join(ROOT, "gallery", "media", "hero", "clay.mp4")
+    hero_ink = os.path.join(REL, "ACT01-BulletTimeOrbit", "looks", "ink-look.mp4")
     hero_res = os.path.join(REL, "ACT01-BulletTimeOrbit", "result.mp4")
-    if all(os.path.exists(p) for p in (hero_pill, hero_clay, hero_res)):
-        jobs.append(("hero", lambda: grid([(hero_clay, "1  The 3D scene, built in code"), (hero_pill, "2  People become pills"), (hero_res, "3  What the model made")],
-                                          3, 330, 140, 10, 8, 128, os.path.join(ASSETS, "hero-three-stages.gif"))))
+    if all(os.path.exists(p) for p in (hero_pill, hero_ink, hero_res)):
+        jobs.append(("hero", lambda: grid([(hero_pill, "PILL  the 3D clip we send"), (hero_ink, "SKETCH  the drawn route"), (hero_res, "REAL  what Seedance 2.5 made")],
+                                          3, 400, 170, 8, 5, 64, os.path.join(ASSETS, "hero-three-stages.gif"))))
     # looks mosaics and routes
     for tid in ("ACT01-BulletTimeOrbit", "CAM06-Orbit", "SC07-AlleyFight", "ONE01-CraneToFollowWhip"):
         lk = os.path.join(REL, tid, "looks")
@@ -138,14 +138,13 @@ def tasks():
             jobs.append((f"route-{tid}", lambda tid=tid, so=so: grid([(os.path.join(T, tid, "pill.mp4"), "pill clip"), (best_result(tid), "made from the pill clip"), (so, "made from the sketch sheet")],
                                                                       1, 400, 168, 8, 5, 96, os.path.join(ASSETS, f"routes-{tid}.gif"))))
     # showcase
-    show = ["CAM06-Orbit", "CAM05-DollyZoom", "CAM16-FPV", "CAM28-BarrelRoll", "CAM21-PanReveal", "CAM25-ArcAndRise", "CAM42-DroneDive", "OBJ02-OrbitHero",
-            "OBJ16-ProductSpin", "ACT01-BulletTimeOrbit", "ACT05-ParkourTrack", "ONE04-OrbitPushRack", "SC04-CarInterior", "SC03-StreetWalkTalk",
-            "FAM01-Booth360", "FAM02-ExplosionWalk", "FAM04-LeapOfFaith", "PRD06-Glambot", "SHOW01-TheHandoff", "SC07-AlleyFight"]
+    show = ["CAM06-Orbit", "CAM05-DollyZoom", "CAM16-FPV", "CAM28-BarrelRoll", "CAM21-PanReveal", "CAM25-ArcAndRise",
+            "OBJ16-ProductSpin", "ACT01-BulletTimeOrbit", "SC04-CarInterior", "FAM01-Booth360", "PRD06-Glambot", "SC07-AlleyFight"]
     for tid in show:
         pill = os.path.join(T, tid, "pill.mp4")
         res = best_result(tid)
         if os.path.exists(pill) and res:
-            jobs.append((f"show-{tid}", lambda tid=tid, pill=pill, res=res: grid([(pill, "3D pill clip (what we send)"), (res, "what Seedance made")], 1, 480, 205, 10, 5, 96,
+            jobs.append((f"show-{tid}", lambda tid=tid, pill=pill, res=res: grid([(pill, "3D pill clip (what we send)"), (res, "what Seedance made")], 1, 380, 163, 8, 3.5, 48,
                                                                                 os.path.join(ASSETS, "showcase", f"{tid}.gif"))))
     return jobs
 
@@ -181,7 +180,7 @@ def main():
             for ln in rd.split("\n"):
                 if ln.startswith("**What it says.**"):
                     says = ln.replace("**What it says.**", "").strip(); break
-            prev = f"templates/{tid}/preview.gif" if os.path.exists(os.path.join(T, tid, "preview.gif")) else f"templates/{tid}/poster.jpg"
+            prev = f"templates/{tid}/poster.jpg" if os.path.exists(os.path.join(T, tid, "poster.jpg")) else f"templates/{tid}/preview.gif"
             rows.append(f"| <img src=\"{os.path.relpath(os.path.join(ROOT, prev), T)}\" width=\"200\"> | [{name}]({tid}/) | {says} |")
         open(os.path.join(T, "INDEX.md"), "w").write("\n".join(rows) + "\n")
         print("INDEX.md written")
