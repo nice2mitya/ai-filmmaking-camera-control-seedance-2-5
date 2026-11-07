@@ -99,7 +99,7 @@ Generating a video goes through Tein's Seedance 2.5, either as the Tein MCP or a
 | `skills/cinematic-previs/` | The skill behind the engine's checks: the camera and cut rulebook and the stills-first QA loop. |
 | `gallery/` | The one-page gallery: open `gallery/index.html`, nothing to install. |
 
-Large result videos are release downloads, not files in git: download `camera-control-results.zip` from the repo's releases and unzip it at the repo root to get `release-media/`. The whole clone is about 440 MB. What does not work yet, and what was never tested: [docs/known-limits.md](docs/known-limits.md).
+Large result videos are release downloads, not files in git: download `camera-control-results.zip` from the [v0.1.0 release](https://github.com/sirioberati/ai-filmmaking-camera-control-seedance-2-5/releases/tag/v0.1.0) and unzip it at the repo root to get `release-media/`. The whole clone is about 440 MB. What does not work yet, and what was never tested: [docs/known-limits.md](docs/known-limits.md).
 
 ## Things that matter most
 
