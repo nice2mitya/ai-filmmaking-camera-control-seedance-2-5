@@ -5,7 +5,10 @@ For AI agents (Claude, Codex, Cursor, others). Read this first.
 ## What this repo is
 A way to control the camera of a Seedance 2.5 video. You write the camera move in three.js, render a grey "pill clip" (people are striped pills), and send that clip to Seedance 2.5 as the reference video with a face photo and a prompt. The model copies the camera and invents the people and the place. 137 ready templates, each with code, clip, prompts and results.
 
-## Generate through Tein
+## В этом форке: Seedance через наш BytePlus, не Tein
+Видео шлём через `tools/byteplus/send.mjs` (обёртка над скиллом `seedance`, ключ `ARK_API_KEY` из `~/.config/genproducer/.env`). Tein не используем. Инструкция: `tools/byteplus/README.md`. По умолчанию скрипт делает dry-run; `--go` – платная отправка, только после явного «да» на конкретный запрос.
+
+## Generate through Tein (upstream, not used here)
 Videos are generated with Seedance 2.5 on Tein (tein.ai), by the Tein MCP or the Tein API. This needs the person's own Tein key (`TEIN_API_KEY`). They sign up at https://tein.ai and create the key there. Never ask for the key in chat, never write it to a file, never commit it. Setup and the full reference: `docs/tein-endpoint.md` and `docs/tein/` (`api-reference.md`, `mcp-setup.md`, `limits.md`, `billing.md`).
 
 ## Rules for agents
