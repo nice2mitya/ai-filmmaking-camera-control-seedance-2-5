@@ -94,7 +94,7 @@ function logJob({ stage, name, promptRef, note }) {
   const result = read(`${name}_result.json`);
   const tokens = result?.usage?.total_tokens ?? result?.usage?.completion_tokens;
   const status = result?.status || (task ? "submitted" : "not_sent");
-  const cost = tokens != null ? (tokens * USD_PER_MTOK / 1e6).toFixed(2) : (status === "failed" ? "0" : "?");
+  const cost = tokens != null ? (tokens * USD_PER_MTOK / 1e6).toFixed(2) : (status === "failed" || status === "not_sent" ? "0" : "?");
   const mp4 = existsSync(outDir) ? readdirSync(outDir).filter((f) => f.startsWith(name) && f.endsWith(".mp4")).sort().at(-1) : null;
   const line = [
     new Date().toISOString().slice(0, 19),
@@ -151,6 +151,26 @@ function findPill() {
   die("нет пилл-клипа: отрендерь engine/cinematic/tools/render-pill.sh " + ID + " или дай --pill");
 }
 
+// BytePlus r2v требует видео-реф ≥ 407 696 пикселей (1280×534 проходит, галерейные 960×400 – нет).
+// Маленький клип масштабируем до ширины 1280 с сохранением пропорций; копию кладём с уникальным
+// именем <ID>_pill_<w>x<h>.mp4, чтобы на S3 шаблоны не затирали друг друга под общим pill.mp4.
+const MIN_PIXELS = 407696;
+function preparePill(file) {
+  if (isUrl(file)) return file;
+  const pr = spawnSync("ffprobe", ["-v", "error", "-select_streams", "v:0", "-show_entries", "stream=width,height", "-of", "csv=p=0", file], { encoding: "utf-8" });
+  const [w, h] = (pr.stdout || "").trim().split(",").map(Number);
+  if (!w || !h) die(`ffprobe не прочитал размер ${file}`);
+  let W = w, H = h;
+  if (w * h < MIN_PIXELS) { W = 1280; H = Math.round((h * 1280) / w / 2) * 2; console.warn(`⚠ пилл ${w}×${h} меньше минимума BytePlus, масштабирую до ${W}×${H}`); }
+  const out = resolve(outDir, `${ID}_pill_${W}x${H}.mp4`);
+  if (!existsSync(out)) {
+    const vf = W === w ? [] : ["-vf", `scale=${W}:${H}:flags=lanczos`];
+    const r = spawnSync("ffmpeg", ["-v", "error", "-y", "-i", file, ...vf, "-an", "-c:v", "libx264", "-crf", "16", "-pix_fmt", "yuv420p", out]);
+    if (r.status !== 0) die(`ffmpeg не подготовил пилл: ${r.stderr}`);
+  }
+  return out;
+}
+
 // env-17-panel1.png → панель 1 листа 2×2 environments/17-*.png (1 – верх-лево, 2 – верх-право, 3 – низ-лево, 4 – низ-право).
 // «whole environment contact sheet» → весь лист.
 function envPanel(fileName, role) {
@@ -179,7 +199,7 @@ for (const ref of refs) {
   if (tag && Number(tag[2]) !== counters[kind]) console.warn(`⚠ порядок рефов: ${ref.tag_in_prompt} идёт ${counters[kind]}-м среди ${kind}`);
   const role = (ref.role || "").toLowerCase();
   let file;
-  if (kind === "video" && (role.includes("pill") || role.includes("blockout"))) file = findPill();
+  if (kind === "video" && (role.includes("pill") || role.includes("blockout"))) file = preparePill(findPill());
   else if (kind === "video" && role.includes("continuation")) {
     file = one("--source") ? local(one("--source")) : die("нужно --source: хвост прошлого тейка для продолжения. Реф: " + ref.role);
   } else if (kind === "image" && (role.includes("person") || role.includes("face"))) {
