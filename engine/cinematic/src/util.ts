@@ -1,5 +1,6 @@
 // Pure helpers: everything in the film is a function of time, so any frame renders alone (Remotion renders out of order).
 import * as THREE from "three";
+import { getInputProps } from "remotion";
 import { ease, prog } from "./motion";   // one easing system for every piece
 
 export const clamp = (x: number, a = 0, b = 1) => Math.min(b, Math.max(a, x));
@@ -66,6 +67,10 @@ export function track(keys: Key<number[]>[], opts: { startVel?: "zero" | "free";
 }
 export const v3 = (a: number[]) => new THREE.Vector3(a[0], a[1], a[2]);
 
-/** full-frame focal length -> vertical fov (deg) on a 2.39:1 extraction of a 36 mm wide sensor */
-export const ASPECT = 2.39;
-export const lens = (mm: number) => (2 * Math.atan(36 / ASPECT / 2 / mm) * 180) / Math.PI;
+/** picture aspect: 2.39 by default; a render can ask for another one (--aspect 0.5625 for a vertical 9:16 pill) */
+export const ASPECT = Number((getInputProps() as { aspect?: number }).aspect ?? 2.39) || 2.39;
+/** sensor height in mm: the 2.39 extraction of a 36 mm wide sensor; a tall frame stands the sensor upright
+ *  (27 mm high: the whole figure and the press on both sides; 36 leaves too much floor), override with --sensor-h */
+export const SENSOR_H = Number((getInputProps() as { sensorH?: number }).sensorH ?? 0) || (ASPECT < 1 ? 27 : 36 / 2.39);
+/** full-frame focal length -> vertical fov (deg) */
+export const lens = (mm: number) => (2 * Math.atan(SENSOR_H / 2 / mm) * 180) / Math.PI;

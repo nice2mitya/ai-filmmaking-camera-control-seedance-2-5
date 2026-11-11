@@ -5,9 +5,8 @@
 import * as THREE from "three";
 import type { Cam, Size } from "./shots";
 import type { Marks } from "./marks";
-import { ASPECT } from "./util";
-
-export const SENSOR_H = 36 / ASPECT;   // mm: the 2.39 extraction of a 36 mm wide sensor
+import { ASPECT, SENSOR_H } from "./util";
+export { SENSOR_H };   // mm: the 2.39 extraction of a 36 mm wide sensor (see util.ts)
 
 /** where the frame's bottom edge sits on the body, as a share of standing height from the head top (centre of each band) */
 const CUT: Record<string, number> = { ECU: 0.1, CU: 0.2, MCU: 0.3, MS: 0.48, MWS: 0.66 };

@@ -13,9 +13,12 @@ import { pathTraceFrame } from "./pathtrace";
 import { makeInk } from "./ink";
 import { addTrackMarks } from "./trackmarks";
 import { StandIns, setStandin } from "./standins";
+import { ASPECT } from "./util";
 
-export const WIDTH = 1920, HEIGHT = 1080;
-const PIC_H = Math.round(WIDTH / 2.39 / 2) * 2; // 804
+// 2.39 picture in 16:9 bars by default; a narrower aspect (--aspect 0.5625) fills a 1080x1920 frame with no bars
+const TALL = ASPECT < 1;
+export const WIDTH = TALL ? 1080 : 1920, HEIGHT = TALL ? 1920 : 1080;
+const PIC_H = TALL ? HEIGHT : Math.round(WIDTH / 2.39 / 2) * 2; // 804
 const BAR = (HEIGHT - PIC_H) / 2;
 
 function useWorld(piece: Piece) {

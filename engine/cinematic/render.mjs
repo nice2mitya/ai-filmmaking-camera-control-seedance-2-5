@@ -25,7 +25,7 @@ const STANDIN = opt("--standin") ?? "pin";   // capsule (the single striped caps
 const OUT = process.env.CAMERA_CONTROL_OUT ?? process.env.ROOTSONG_OUT ?? `${KF}/out/${ID.toLowerCase()}`;
 fs.mkdirSync(OUT, { recursive: true });
 const clean = args.includes("--clean");   // picture only: no slate, report, subtitles or titles
-const inputProps = { standin: STANDIN, loosen: Number(opt("--loosen") ?? 1), piece: ID, slate: !clean && !args.includes("--no-slate"), report: !clean && !args.includes("--no-report"), clean, blur: !args.includes("--no-blur"), subframes: Number(opt("--subframes") ?? 1), pathtrace: Number(opt("--pathtrace") ?? 0), storyboard: args.includes("--storyboard"), pencil: args.includes("--pencil"), ghost: args.includes("--ghost"), plate: args.includes("--plate"), boxes: args.includes("--boxes"), marks: args.includes("--marks"), noScenery: args.includes("--no-scenery") };
+const inputProps = { standin: STANDIN, loosen: Number(opt("--loosen") ?? 1), piece: ID, slate: !clean && !args.includes("--no-slate"), report: !clean && !args.includes("--no-report"), clean, blur: !args.includes("--no-blur"), subframes: Number(opt("--subframes") ?? 1), pathtrace: Number(opt("--pathtrace") ?? 0), storyboard: args.includes("--storyboard"), pencil: args.includes("--pencil"), ghost: args.includes("--ghost"), plate: args.includes("--plate"), boxes: args.includes("--boxes"), marks: args.includes("--marks"), aspect: Number(opt("--aspect") ?? 2.39), sensorH: Number(opt("--sensor-h") ?? 0), noScenery: args.includes("--no-scenery") };
 const chromiumOptions = { gl: "angle" };
 
 let serveUrl = null;
