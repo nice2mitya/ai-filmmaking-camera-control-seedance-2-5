@@ -49,7 +49,7 @@ const dive = (w: number) => (run(w, DIVE.up[0], DIVE.up[1]) - run(w, DIVE.down[0
 const arc = (w: number) => run(w, ARC.up[0], ARC.up[1]) / run(W_END, ARC.up[0], ARC.up[1]);
 
 // ---------------- the star: a 50° turn that leads the lens round, begun at normal speed and ended in slow motion ----------------
-const YAW1 = AZ1 * RAD, YAW0 = (AZ0 - 3) * RAD;  // starts 3° off the first camera position, ends facing the last
+const YAW1 = AZ1 * RAD, YAW0 = (AZ1 - (AZ1 - AZ0) / 2) * RAD;  // starts 3° off the first camera position, ends facing the last
 const TURN = { t0: 0.9, dur: W_END - 0.96 };             // world seconds: film 0.9 s to about 14 s, a few degrees ahead of the lens all the way
 const yawAt = (w: number) => lerp(YAW0, YAW1, smoother((w - TURN.t0) / TURN.dur));
 const STAR_AT: [number, number, number] = [0, CARPET_Y, 0];
@@ -86,7 +86,7 @@ const flakeAt = (f: Flake, w: number, out: THREE.Vector3) => {
 const FLAKES: Flake[] = (() => {
   const r = rng(41), out: Flake[] = [], p = new THREE.Vector3(), line = new THREE.Line3(), near = new THREE.Vector3();
   const times = Array.from({ length: END * 96 + 1 }, (_, i) => i / 96), cams = times.map((t) => glambot(t).pos), ws = times.map(CLOCK);
-  for (let tries = 0; out.length < 900 && tries < 14000; tries++) {
+  for (let tries = 0; out.length < 0 && tries < 14000; tries++) {
     const f: Flake = { x: (r() - 0.5) * 9, y: 0.1 + r() * 8.4, z: -2.2 + r() * 5.6, v: 0.9 + r() * 0.45, amp: 0.03 + r() * 0.03, w: 4 + r() * 3.5, ph: r() * 6.28, s: 0.022 + r() * 0.02,
       axis: V(r() - 0.5, r() - 0.5, r() - 0.5).normalize(), spin: (5 + r() * 8) * (r() < 0.5 ? -1 : 1) };
     if (Math.hypot(f.x, f.z) < 0.27 + f.amp + 0.09) continue;                                   // never onto the star

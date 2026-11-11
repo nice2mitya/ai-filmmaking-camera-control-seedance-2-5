@@ -11,6 +11,7 @@ SRC = REPO / "engine/cinematic/src/templates/products"
 BASE = (SRC / "p06-glambot.ts").read_text()
 
 VARIANTS = [
+    ("a", "Clean", "Glambot clean", "Траектория оригинала PRD06-Glambot, без конфетти.", {}),
     # suffix, id-name, title, what changes, replacements {pattern: new}
     ("b", "Mirror", "Glambot mirror", "Облёт в обратную сторону: дуга уходит влево от камеры.",
      {"AZ0 = -23.5, AZ1 = 23.5": "AZ0 = 23.5, AZ1 = -23.5"}),
@@ -29,7 +30,10 @@ VARIANTS = [
 
 # общие правки: поворот звезды считается от дуги и длины ролика, а не константами под 47°/15 с
 COMMON = {
-    "YAW0 = YAW1 - 50 * RAD;": "YAW0 = (AZ0 - 3) * RAD;",
+    # v2: герой поворачивается только на половину дуги – иначе он «едет» вместе с камерой и облёт не читается
+    "YAW0 = YAW1 - 50 * RAD;": "YAW0 = (AZ1 - (AZ1 - AZ0) / 2) * RAD;",
+    # v2: без конфетти – Seedance копировал белые хлопья как снег
+    "out.length < 900 &&": "out.length < 0 &&",
     "const TURN = { t0: 0.9, dur: 1.8 };": "const TURN = { t0: 0.9, dur: W_END - 0.96 };",
 }
 
