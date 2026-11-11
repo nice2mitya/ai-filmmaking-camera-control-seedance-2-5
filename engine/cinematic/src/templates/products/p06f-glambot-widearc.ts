@@ -1,4 +1,4 @@
-// PRD06f-GlambotWideArc: вариант PRD06-Glambot (tools/variants/glambot.py). Облёт 120° вместо 47°: после нырка камера заходит почти в профиль с другой стороны.
+// PRD06f-GlambotWideArc: вариант PRD06-Glambot (tools/variants/glambot.py). Облёт 90° вместо 47°. Занавес, дорожка и ограждение расширены, чтобы 20 мм не выходил за край декорации (при 120° выходил).
 // PRD06-Glambot: the red-carpet robot-arm shot, timed from a real Glambot take, with a higher start so the move reads.
 // It is one playback speed ramp over one robot move. The lens starts 5.5 m up, almost overhead, looking down 60° at
 // carpet, rope and the star small in frame. It drops first and closes in last, so it levels out on the way down (the
@@ -28,7 +28,7 @@ const CLOCK = speedRamp([[0, 1], [1.3, 1], [2.1, SLOW], [END, SLOW]]);
 const W_END = CLOCK(END);                      // 2.76 s of world time in 15 s of film
 
 // ---------------- the robot's move, in WORLD seconds ----------------
-const AZ0 = -60, AZ1 = 60;                 // the second leg drifts 47° to the camera's right
+const AZ0 = -45, AZ1 = 45;                 // the second leg drifts 47° to the camera's right
 const R0 = 2.8, R2 = 1.6, R8 = 1.32;           // metres from the star's axis: the top, the end of the dive, the last frame
 const H0 = 5.5, H2 = 1.64, H8 = 1.59;          // lens height at the same three moments
 const DIVE = { up: [0.05, 0.45], down: [1.1, 1.7] };        // 0.4 s to reach speed, 0.6 s to brake into the arc
@@ -153,13 +153,13 @@ function build(w: KitWorld) {
   studioFloor(w);
   const set = new THREE.Group();
   // the carpet: 32 m long, from the rope line (z -2.65) to well behind the camera's start (z 7)
-  const carpet = put(new THREE.Mesh(new THREE.BoxGeometry(32, CARPET_Y, 9.65), clay(GREY.dark, 0.98)), 0, CARPET_Y / 2, 2.175); carpet.receiveShadow = true; set.add(carpet);
+  const carpet = put(new THREE.Mesh(new THREE.BoxGeometry(160, CARPET_Y, 9.65), clay(GREY.dark, 0.98)), 0, CARPET_Y / 2, 2.175); carpet.receiveShadow = true; set.add(carpet);
   // rope posts along the carpet's far edge, between the star and the press
   const posts = new THREE.Group();
-  for (let i = 0; i < 19; i++) { const x = -13.6 + i * 1.6; posts.add(put(post(), x, CARPET_Y, -2.5)); if (i) posts.add(rope(V(x - 1.6, CARPET_Y + 0.9, -2.5), V(x, CARPET_Y + 0.9, -2.5))); }
+  for (let i = 0; i < 99; i++) { const x = -78.4 + i * 1.6; posts.add(put(post(), x, CARPET_Y, -2.5)); if (i) posts.add(rope(V(x - 1.6, CARPET_Y + 0.9, -2.5), V(x, CARPET_Y + 0.9, -2.5))); }
   set.add(shadeAll(posts));
   // the curtain behind everything, and two backlights high in front of it, turned to the star
-  set.add(put(curtain(46, 9), 0, 0, -6.6));
+  set.add(put(curtain(260, 9), 0, 0, -6.6));
   for (const x of [-6.6, 5.2]) { const b = backlight(2.5); b.position.set(x, 0, -5.6); b.rotation.y = faceStar(x, -5.6); set.add(b); }
   // the press: person pills behind the rope, each with a camera and a flash that pops
   PRESS.forEach((p, i) => {

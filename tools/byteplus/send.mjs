@@ -163,7 +163,7 @@ function preparePill(file) {
   let W = w, H = h;
   if (w * h < MIN_PIXELS) { W = 1280; H = Math.round((h * 1280) / w / 2) * 2; console.warn(`⚠ пилл ${w}×${h} меньше минимума BytePlus, масштабирую до ${W}×${H}`); }
   const out = resolve(outDir, `${ID}_pill_${W}x${H}.mp4`);
-  if (!existsSync(out)) {
+  if (!existsSync(out) || statSync(file).mtimeMs > statSync(out).mtimeMs) {   // пилл перерендерили – копию обновить
     const vf = W === w ? [] : ["-vf", `scale=${W}:${H}:flags=lanczos`];
     const r = spawnSync("ffmpeg", ["-v", "error", "-y", "-i", file, ...vf, "-an", "-c:v", "libx264", "-crf", "16", "-pix_fmt", "yuv420p", out]);
     if (r.status !== 0) die(`ffmpeg не подготовил пилл: ${r.stderr}`);
